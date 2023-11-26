@@ -1,0 +1,25 @@
+import time
+
+focus_time = 25*60 # 25分钟专注时间
+rest_time = 5*60 # 5分钟休息时间 
+
+cycles = 4 # 总共循环4次
+
+for i in range(cycles):
+    print(f"专注时段 #{i+1}")
+    
+    t_end = time.time() + focus_time
+    while time.time() < t_end:
+        print(f"\r剩余专注时间:{t_end-time.time():.0f} 秒",end="") 
+        time.sleep(1)
+    
+    print(f"\n休息时段 #{i+1}")
+    
+    t_end = time.time() + rest_time
+    while time.time() < t_end:
+        print(f"\r剩余休息时间:{t_end-time.time():.0f} 秒",end="")
+        time.sleep(1)
+        
+    print("")
+    
+print("专注学习结束!")
