@@ -1,0 +1,25 @@
+'创建Outlook应用对象
+Dim outlookApp As Outlook.Application = New Outlook.Application
+
+'打开要插入的邮件 
+Dim mail As Outlook.MailItem = outlookApp.Session.OpenSharedItem(mailItemID)
+
+'WORD对象
+Dim wordApp As Word.Application = New Word.Application
+Dim wordDoc As Word.Document = wordApp.Documents.Add()
+
+'在文档开头插入邮件 
+wordDoc.Paragraphs.First.Range.InsertFile(mail.FilePath)
+
+'插入一级标题 
+wordDoc.Paragraphs.Add().Range.Text = "以下是邮件内容:"
+wordDoc.Paragraphs.Add().Range.InsertParagraph()
+
+'插入邮件内容 
+Dim mailBody As String = mail.Body
+wordDoc.Paragraphs.Add().Range.Text = mailBody 
+
+'保存和关闭
+wordDoc.Save()
+wordDoc.Close()
+wordApp.Quit()
