@@ -1,0 +1,25 @@
+Sub SendEmail()
+
+    Dim OutApp As Object
+    Dim OutMail As Object
+
+    Set OutApp = CreateObject("Outlook.Application")
+    Set OutMail = OutApp.CreateItem(0)
+
+    On Error Resume Next
+    With OutMail
+        .To = "receiver@email.com"
+        .CC = "" 
+        .BCC = "" 
+        .Subject = "Test PPT Email"  
+        .Body = "Hi there"
+        .Attachments.Add ActivePresentation.FullName
+        .Send 
+    End With
+
+    On Error GoTo 0
+
+    Set OutMail = Nothing
+    Set OutApp = Nothing
+
+End Sub
