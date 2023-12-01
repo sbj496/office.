@@ -1,0 +1,10 @@
+' 选择要合并的单元格范围
+Range("A1:B2").Select
+
+' 合并所选单元格
+With Selection
+    .MergeCells = True
+End With
+
+' 设置合并后的单元格的值
+Range("A1").Value = "Merged Cell"
