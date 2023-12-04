@@ -1,0 +1,14 @@
+Sub 行列置换()
+
+Dim i As Integer, j As Integer
+Dim tmp As String
+
+For i = 1 To UsedRange.Rows.Count
+    For j = i + 1 To UsedRange.Rows.Count
+        tmp = Cells(i, j).Value
+        Cells(i, j).Value = Cells(j, i).Value
+        Cells(j, i).Value = tmp
+    Next j
+Next i
+
+End Sub
