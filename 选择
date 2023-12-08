@@ -1,0 +1,5 @@
+' 选择要填充的单元格范围
+Range("A1:A10").Select
+
+' 填充序列(从1开始,步长为1)
+Selection.AutoFill Destination:=Range("A1:A10"), Type:=xlFillSeries
