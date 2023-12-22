@@ -1,0 +1,18 @@
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+# 创建一个新的Word文档
+doc = Document()
+
+# 添加带有不同对齐方式的段落
+paragraph1 = doc.add_paragraph("这是左对齐的文本。")
+paragraph1.alignment = WD_ALIGN_PARAGRAPH.LEFT
+
+paragraph2 = doc.add_paragraph("这是居中对齐的文本。")
+paragraph2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+paragraph3 = doc.add_paragraph("这是右对齐的文本。")
+paragraph3.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+
+# 保存文档
+doc.save('aligned_document.docx')
