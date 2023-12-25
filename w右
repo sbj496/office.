@@ -1,0 +1,14 @@
+# 导入python-docx库
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+# 打开或创建一个Word文档
+doc = Document("test.docx")
+
+# 遍历文档中的所有段落
+for paragraph in doc.paragraphs:
+    # 设置段落的对齐方式为右对齐
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+
+# 保存文档
+doc.save("test.docx")
