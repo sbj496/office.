@@ -1,0 +1,6 @@
+def function():
+    print("Hello")
+    for i in range(5):
+        print(i)
+    if True:
+        print("True")
