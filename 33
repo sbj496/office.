@@ -1,0 +1,10 @@
+import pandas as pd
+
+# 读取数据
+data = pd.read_excel('data.xlsx')
+
+# 转置数据
+transposed_data = data.T
+
+# 保存转置后的数据
+transposed_data.to_excel('transposed_data.xlsx', index=False)
