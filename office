@@ -1,0 +1,37 @@
+```python
+import re  
+import requests  
+from datetime import datetime  
+  
+# 获取当前时间并格式化为字符串  
+current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  
+print(f"当前时间: {current_time}")  
+  
+# 发送HTTP请求获取网页源码  
+url = "http://www.weather.com.cn/weather1dn/101100713.shtml"  
+response = requests.get(url)  
+webpage_source = response.text  
+  
+# 使用正则表达式匹配od21、od22和od26后面的数字  
+matches_od21 = re.findall(r'"od21":"([-+]?\d*\.\d+|\d+)"', webpage_source)  
+matches_od22 = re.findall(r'"od22":"([-+]?\d*\.\d+|\d+)"', webpage_source)  
+matches_od26 = re.findall(r'"od26":"([-+]?\d*\.\d+|\d+)"', webpage_source)  
+  
+# 将每列数据反向提取  
+reversed_od21 = matches_od21[::-1]  
+reversed_od22 = matches_od22[::-1]  
+reversed_od26 = matches_od26[::-1]  
+  
+# 将当前时间和结果追加到文本文件  
+with open('output.txt', 'a') as file:  
+    file.write(f"\n当前时间: {current_time}\n")  
+    for od21, od22, od26 in zip(reversed_od21, reversed_od22, reversed_od26):  
+        line = f"{od21}\t{od22}\t{od26}"  
+        file.write(line + '\n')  
+  
+print("新的结果和时间已追加到 output.txt 文件中")
+```
+
+$$
+\frac{abke^{-kx}}{\left( 1+be^{-kx} \right) ^2}
+$$
