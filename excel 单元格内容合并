@@ -1,0 +1,7 @@
+cell_string = "Hello World"
+
+delimiter = " "
+
+merged_content = delimiter.join(cell_string.split())
+
+print(merged_content)  # 输出：Hello World
